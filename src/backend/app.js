@@ -8,6 +8,9 @@ const app = express();
 
 app.use(express.json());
 
+app.get('/cat', User.getAllCat);
+app.post('/cat', User.productInsert);
+app.get('/prod', User.getAllProd);
 app.get('/user', User.getAll);
 app.get('/user/:id', User.getById);
 app.get('/user/search/:id', User.getByIdAndEmail);

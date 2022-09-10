@@ -1,6 +1,32 @@
 // src/services/user.service.js
 
-const { User } = require('../models');
+const { User, Category, Product } = require('../models');
+
+const getAllCat = async () => {
+  const cat = await Category.findAll();
+
+  return cat;
+};
+
+let createCatWithProds = async (catObj, prodArr) => {
+  let catId = await Category.create({
+    nameCategory: catObj,
+  }).then(cat => cat.id).catch(err => console.log(err));
+  await prodArr.map((obj) => Product.create({
+    name: obj.name,
+    description: obj.description,
+    value: obj.value,
+    CategoryId: catId,
+  }).catch(err => console.log(err))
+);
+  return;
+}
+
+const getAllProd = async () => {
+  const prod = await Product.findAll();
+
+  return prod;
+};
 
 const getAll = async () => {
   const users = await User.findAll();
@@ -51,5 +77,5 @@ module.exports = {
   getByIdAndEmail,
   createUser,
   updateUser,
-  deleteUser,
+  deleteUser, getAllCat, createCatWithProds, getAllProd
 };

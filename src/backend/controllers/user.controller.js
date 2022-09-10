@@ -1,7 +1,39 @@
 // src/controllers/user.controller.js
-
 const UserService = require('../services/user.service');
+
 const error500Message = 'Algo deu errado';
+
+let newCategory = "Divino";
+
+const getAllCat = async (_req, res) => {
+  try {
+    const cat = await UserService.getAllCat();
+    return res.status(200).json(cat);
+  } catch (e) {
+    console.log(e.message);
+    res.status(500).json({ message: 'Ocorreu um erro' });
+  }
+};
+
+const getAllProd = async (_req, res) => {
+  try {
+    const Prod = await UserService.getAllProd();
+    return res.status(200).json(Prod);
+  } catch (e) {
+    console.log(e.message);
+    res.status(500).json({ message: 'Ocorreu um erro' });
+  }
+};
+
+const productInsert = async (req, res) => {
+  try {
+    const cat = await UserService.createCatWithProds(newCategory, [req.body]);
+    return res.status(200).json(cat);
+  } catch (e) {
+    console.log(e.message);
+    res.status(500).json({ message: 'Ocorreu um erro' });
+  }
+};
 
 const getAll = async (_req, res) => {
   try {
@@ -17,7 +49,7 @@ const getById = async (req, res) => {
   try {
     const { id } = req.params;
     const user = await UserService.getById(id);
-  
+
     if (!user) return res.status(404).json({ message: 'Usuário não encontrado' });
 
     return res.status(200).json(user);
@@ -32,7 +64,7 @@ const getByIdAndEmail = async (req, res) => {
     const { id } = req.params;
     const { email } = req.query;
     const user = await UserService.getByIdAndEmail(id, email);
-  
+
     if (!user) return res.status(404).json({ message: 'Usuário não encontrado' });
 
     return res.status(200).json(user);
@@ -61,7 +93,7 @@ const updateUser = async (req, res) => {
 
     if (!updatedUser) return res.status(404).json({ message: 'Usuário não encontrado' });
 
-    return res.status(200).json({ message: 'Usuário atualizado com sucesso!' });    
+    return res.status(200).json({ message: 'Usuário atualizado com sucesso!' });
   } catch (e) {
     console.log(e.message);
     res.status(500).json({ message: error500Message });
@@ -86,5 +118,5 @@ module.exports = {
   getByIdAndEmail,
   createUser,
   updateUser,
-  deleteUser,
+  deleteUser, getAllCat, productInsert, getAllProd
 };
