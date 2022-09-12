@@ -12,7 +12,6 @@ module.exports = {
       nameCategory: {
         type: Sequelize.STRING,
         allowNull: false,
-        field: 'name_category',
       },
       createdAt: {
         allowNull: false,

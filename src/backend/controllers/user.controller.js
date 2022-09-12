@@ -1,39 +1,6 @@
-// src/controllers/user.controller.js
 const UserService = require('../services/user.service');
 
 const error500Message = 'Algo deu errado';
-
-let newCategory = "Divino";
-
-const getAllCat = async (_req, res) => {
-  try {
-    const cat = await UserService.getAllCat();
-    return res.status(200).json(cat);
-  } catch (e) {
-    console.log(e.message);
-    res.status(500).json({ message: 'Ocorreu um erro' });
-  }
-};
-
-const getAllProd = async (_req, res) => {
-  try {
-    const Prod = await UserService.getAllProd();
-    return res.status(200).json(Prod);
-  } catch (e) {
-    console.log(e.message);
-    res.status(500).json({ message: 'Ocorreu um erro' });
-  }
-};
-
-const productInsert = async (req, res) => {
-  try {
-    const cat = await UserService.createCatWithProds(newCategory, [req.body]);
-    return res.status(200).json(cat);
-  } catch (e) {
-    console.log(e.message);
-    res.status(500).json({ message: 'Ocorreu um erro' });
-  }
-};
 
 const getAll = async (_req, res) => {
   try {
@@ -113,10 +80,6 @@ const deleteUser = async (req, res) => {
 };
 
 module.exports = {
-  getAll,
-  getById,
-  getByIdAndEmail,
-  createUser,
-  updateUser,
-  deleteUser, getAllCat, productInsert, getAllProd
+  getAll, getById, getByIdAndEmail,
+  createUser, updateUser, deleteUser,
 };

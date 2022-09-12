@@ -4,67 +4,67 @@ module.exports = {
   up: async (queryInterface, Sequelize) => queryInterface.bulkInsert('Categories',
     [
       {
-        nameCategory: 'Dispositivos Amazon',
+        nameCategory: 'dispositivos amazon',
         createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
         updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
 
       {
-        nameCategory: 'Livros',
+        nameCategory: 'livros',
         createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
         updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
 
       {
-        nameCategory: 'eBooks',
+        nameCategory: 'ebooks',
         createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
         updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
 
       {
-        nameCategory: 'Computadores e Informática',
+        nameCategory: 'computadores e informática',
         createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
         updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
 
       {
-        nameCategory: 'Cuidados Pessoais',
+        nameCategory: 'cuidados pessoais',
         createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
         updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
 
       {
-        nameCategory: 'Games e Consoles',
+        nameCategory: 'games e consoles',
         createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
         updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
 
       {
-        nameCategory: 'Cozinha',
+        nameCategory: 'cozinha',
         createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
         updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
 
       {
-        nameCategory: 'Brinquedos',
+        nameCategory: 'brinquedos',
         createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
         updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
 
       {
-        nameCategory: 'Papelaria e Escritório',
+        nameCategory: 'papelaria e escritório',
         createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
         updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
 
       {
-        nameCategory: 'Eletrônicos',
+        nameCategory: 'eletrônicos',
         createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
         updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
 
       {
-        nameCategory: 'Alimentos e Bebidas',
+        nameCategory: 'alimentos e bebidas',
         createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
         updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
