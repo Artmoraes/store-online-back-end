@@ -3,11 +3,12 @@
 require('dotenv').config();
 
 const config = {
-  username: process.env.MYSQL_USER || 'root',
-  password: process.env.MYSQL_PASSWORD || 'art8225',
-  database: process.env.MYSQL_DATABASE || 'orm_example',
-  host: process.env.MYSQL_HOST,
-  dialect: 'mysql',
+  username: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
+  host: process.env.DB_HOST,
+  dialect: process.env.DB_DIALECT,
+  port: process.env.DB_PORT,
 };
 
 module.exports = {
