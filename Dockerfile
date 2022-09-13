@@ -1,6 +1,6 @@
 FROM node:alpine
 
-WORKDIR /src/backend
+WORKDIR /app
 
 COPY package.json .
 
@@ -8,4 +8,4 @@ RUN npm install
 
 COPY . .
 
-CMD ["node", "server.js"]
+CMD ["npm", "start"]
