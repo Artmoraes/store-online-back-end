@@ -1,7 +1,7 @@
 const { Category, Product } = require('../models');
 
-
-let createProduct = async (typeCategory, productInformations) => {
+// eslint-disable-next-line max-lines-per-function
+const createProduct = async (typeCategory, productInformations) => {
   const dataCategories = await Category.findAll();
   const existCategories = dataCategories.map((obj) => obj.dataValues);
   const nameCategories = existCategories.map((obj) => obj.nameCategory);
@@ -10,12 +10,13 @@ let createProduct = async (typeCategory, productInformations) => {
     if (obj.nameCategory === typeCategory) {
       return obj;
     }
+    return false;
   });
 
   if (!(nameCategories.find((obj) => obj === typeCategory))) {
     await Category.create({
       nameCategory: typeCategory,
-    }).then(cat => cat.id).catch(err => console.log(err));
+    }).then((cat) => cat.id).catch((err) => console.log(err));
   }
 
   await productInformations.map((obj) => Product.create(
@@ -24,9 +25,9 @@ let createProduct = async (typeCategory, productInformations) => {
       description: obj.description,
       value: obj.value,
       CategoryId: idCategories.id,
-    }
-  ).catch(err => console.log(err)));
-}
+    },
+  ).catch((err) => console.log(err)));
+};
 
 const getAllProducts = async () => {
   const prod = await Product.findAll();
@@ -34,4 +35,10 @@ const getAllProducts = async () => {
   return prod;
 };
 
-module.exports = { createProduct, getAllProducts };
+const getEspecificProduct = async (id) => {
+  const product = Product.findByPk(id);
+  console.log(product);
+  return product;
+};
+
+module.exports = { createProduct, getAllProducts, getEspecificProduct };

@@ -1,4 +1,4 @@
-const { User, Category, Product } = require('../models');
+const { User } = require('../models');
 
 const getAll = async () => {
   const users = await User.findAll();
@@ -44,6 +44,10 @@ const deleteUser = async (id) => {
 };
 
 module.exports = {
-  getAll, getById, getByIdAndEmail,
-  createUser, updateUser, deleteUser,
+  getAll,
+getById,
+getByIdAndEmail,
+  createUser,
+updateUser,
+deleteUser,
 };

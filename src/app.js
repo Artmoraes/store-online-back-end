@@ -14,6 +14,7 @@ app.use(express.json());
 app.get('/categories', Category.getAllCategories);
 app.post('/categories', Product.productInsert);
 app.get('/products', Product.getAllProducts);
+app.get('/products/:id', Product.getProductById);
 app.get('/user', User.getAll);
 app.get('/user/:id', User.getById);
 app.get('/user/search/:id', User.getByIdAndEmail);

@@ -19,7 +19,7 @@ const getById = async (req, res) => {
 
     if (!user) return res.status(404).json({ message: 'Usuário não encontrado' });
 
-    return res.status(200).json(user);
+    return res.status(200).json(user, { message: 'Olá, bem-vindo!' });
   } catch (e) {
     console.log(e.message);
     res.status(500).json({ message: error500Message });
@@ -34,7 +34,7 @@ const getByIdAndEmail = async (req, res) => {
 
     if (!user) return res.status(404).json({ message: 'Usuário não encontrado' });
 
-    return res.status(200).json(user);
+    return res.status(200).json(user, { message: 'Olá, bem-vindo!' });
   } catch (e) {
     console.log(e.message);
     res.status(500).json({ message: error500Message });
@@ -45,7 +45,7 @@ const createUser = async (req, res) => {
   try {
     const { fullName, email, phoneNum } = req.body;
     const newUser = await UserService.createUser(fullName, email, phoneNum);
-    return res.status(201).json(newUser);
+    return res.status(201).json(newUser, { message: 'Olá, bem-vindo!' });
   } catch (e) {
     console.log(e.message);
     res.status(500).json({ message: error500Message });
@@ -80,6 +80,10 @@ const deleteUser = async (req, res) => {
 };
 
 module.exports = {
-  getAll, getById, getByIdAndEmail,
-  createUser, updateUser, deleteUser,
+  getAll,
+  getById,
+  getByIdAndEmail,
+  createUser,
+  updateUser,
+  deleteUser,
 };
