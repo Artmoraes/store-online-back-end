@@ -1,17 +1,12 @@
 const { Category, Product } = require('../models');
 
 // eslint-disable-next-line max-lines-per-function
-const createProduct = async (typeCategory, productInformations) => {
+const createProduct = async (typeCategory, product) => {
   const dataCategories = await Category.findAll();
   const existCategories = dataCategories.map((obj) => obj.dataValues);
   const nameCategories = existCategories.map((obj) => obj.nameCategory);
-  
-  const idCategories = await existCategories.find((obj) => {
-    if (obj.nameCategory === typeCategory) {
-      return obj;
-    }
-    return false;
-  });
+
+  const idCategories = await existCategories.find((obj) => obj.nameCategory === typeCategory);
 
   if (!(nameCategories.find((obj) => obj === typeCategory))) {
     await Category.create({
@@ -19,14 +14,12 @@ const createProduct = async (typeCategory, productInformations) => {
     }).then((cat) => cat.id).catch((err) => console.log(err));
   }
 
-  await productInformations.map((obj) => Product.create(
-    {
-      name: obj.name,
-      description: obj.description,
-      value: obj.value,
-      CategoryId: idCategories.id,
-    },
-  ).catch((err) => console.log(err)));
+  await Product.create({
+    name: product.name,
+    description: product.description,
+    value: product.value,
+    CategoryId: idCategories.id,
+  });
 };
 
 const getAllProducts = async () => {
